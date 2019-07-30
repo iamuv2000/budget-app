@@ -10,7 +10,54 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const database = firebase.database()
+database.ref().set({
+    name: 'Yuvraj Singh',
+    age: 19,
+    isSingle: false,
+    location:{
+      city:'Pune',
+      country:'India'
+    }
+}).then(()=>{
+  console.log('Data is saved')
+}).catch((e)=>{
+  console.log('This failed.',e)
+})
 
-firebase.database().ref().set({
-    name: 'Yuvraj Singh'
+// database.ref().set('This is my data')
+
+// database.ref('age').set(20)
+// database.ref('location/city').set('Vellore')
+// database.ref('attributes').set({
+//   heigth: '6ft',
+//   weight: '58kg'
+// }).then(()=>{
+//   console.log('Edited')
+// }).catch((e)=>{
+//   console.log('Yeah, not happening',)
+// })
+
+// database.ref('isSingle')
+// .remove()
+// .then(()=>{
+//   console.log('done!')
+// }).catch((e)=>{
+//   console.log(e)
+// })
+
+// database.ref('isSingle')
+// .set(null)
+// .then(()=>{
+//   console.log('done!')
+// }).catch((e)=>{
+//   console.log(e)
+// })
+
+
+database.ref().update({
+  isSingle: true,
+  name: 'Yuvi',
+  job: 'MERN Stack developer',
+  "location/city": 'Vellore'
 })
